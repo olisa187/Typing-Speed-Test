@@ -1,57 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Typing Speed Test</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="src/style.css">
 </head>
+
 <body>
+  <div class="container">
 
-  Personal best: <!-- PB --> WPM
+    <header>
+      <h1>Typing Speed Test</h1>
+      <picture>
+        <source media="(min-width: 768px)" srcset="assets/images/logo-large.svg">
+        <img src="assets/images/logo-small.svg" alt="Logo">
+      </picture>
+      <span class="bestWPMscore">
+        <span>Personal</span> best: 92 WPM
+      </span>
+    </header>
 
-  WPM: <!-- WPM -->
-  Accuracy: <!-- Accuracy -->
-  Time: <!-- Time -->
+    <main>
+      <div class="typing-test-panel">
+        <div class="typing-test-panel__status">
+          <div class="typing-test-panel__status_info">
+            <!-- WPM -->
+            <div>WPM:</div>
+            <div>0</div>
+          </div>
 
-  Difficulty:
-  Easy
-  Medium
-  Hard
+          <div class="typing-test-panel__status_info">
+            <!-- Accuracy -->
+            <div>Accuracy:</div>
+            <div>100%</div>
+          </div>
 
-  Mode:
-  Timed (60s)
-  Passage
+          <div class="typing-test-panel__status_info">
+            <!-- Time -->
+            <div>Time:</div>
+            <div>0.60</div>
+          </div>
+        </div>
 
-  <!-- Passage -->
+        <div class="typing-test-panel__mode">
+          <div>
+            <span>Difficulty:</span>
+            <ul>
+              <li>Easy</li>
+              <li>Medium</li>
+              <li>Hard</li>
+            </ul>
 
-  Start Typing Test
-  Or click the text and start typing
 
-  <!-- Test Complete Start -->
 
-  Test Complete!
-  Solid run. Keep pushing to beat your high score.
+          </div>
+          <div>
+            <span>Mode:</span>
+            <ul>
+              <li>Timed (60s)</li>
+              <li>Passage</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-  WPM: <!-- WPM -->
-  Accuracy: <!-- Accuracy -->
-  Characters: <!-- Correct/Incorrect -->
+      <div class="type-speed-container">
+        <div>
+          <p>
+            The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age
+            trade
+            networks. Obsidian from Anatolia, lapis lazuli from Afghanistan, and amber from the Baltic—all discovered in
+            a
+            single Mycenaean tomb—suggested commercial connections far more extensive than previously hypothesized.
+            "We've
+            underestimated ancient peoples' navigational capabilities and their appetite for luxury goods," the lead
+            researcher observed. "Globalization isn't as modern as we assume.
+          </p>
+          <div class="">
+            <button type="button">Start Typing Test</button>
+            <p>Or click the text and start typing</p>
+          </div>
+        </div>
 
-  Go Again
-  
-  <!-- Test Complete End -->
+        <div>
+          <div>
+            <img src="assets/images/icon-completed.svg" alt="completed" referrerpolicy="noopener">
+          </div>
+          <div class="">
+            <!-- Test Complete Start -->
+            <h2>Test Complete!</h2>
+            <p>Solid run. Keep pushing to beat your high score.</p>
+          </div>
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+          <div class="">
+            <div>
+              <div>WPM: <!-- WPM --></div>
+              <div>85</div>
+            </div>
+
+            <div>
+              <div>Accuracy: <!-- Accuracy --></div>
+              <div>90%</div>
+            </div>
+
+            <div>
+              <div>Characters: <!-- Correct/Incorrect --></div>
+              <div>
+                <span>120</span><span>/</span><span>5</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button type="button">Go Again</button>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Test Complete End -->
+
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </footer>
   </div>
 </body>
+
 </html>

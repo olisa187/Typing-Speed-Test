@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "Sora";
+  src: url(../assets/fonts/Sora/Sora-VariableFont_wght.ttf);
+}
+
+/* Declaring all the variables neccessaty for this project */
+:root {
+  /* Natural Variant */
+  --Neutral-0: hsl(0 0 100);
+  --Neutral-400: hsl(240 1 59);
+  --Neutral-500: hsl(240 3% 46%);
+  --Neutral-800: hsl(0 0 15%);
+  --Neutral-900: hsl(0 0 7%);
+  /* Blue Variant */
+  --Blue-400: hsl(210 100% 65%);
+  --Blue-600: hsl(210 100% 55%);
+  /* Red */
+  --Red-500: hsl(354 63% 57%);
+  /* Green */
+  --Green-500: hsl(140 63% 57%);
+  /* Yellow */
+  --Yellow-400: hsl(49 85% 70%);
+
+  /* Font size */
+  --fs-12: 0.25rem;
+  --fs-18: 1.125rem;
+  --fs-24: 1.5rem;
+  --fs-32: 2rem;
+  --fs-48: 3rem;
+
+  /* Spacing Variant */
+  --spacing-0: 0;
+  --spacing-25: 0.125em;
+  --spacing-50: 0.25em;
+  --spacing-75: 0.375em;
+  --spacing-100: 0.5em;
+  --spacing-125: 0.625em;
+  --spacing-150: 0.75em;
+  --spacing-200: 1em;
+  --spacing-250: 1.25em;
+  --spacing-300: 1.5em;
+  --spacing-400: 2em;
+  --spacing-500: 2.5em;
+  --spacing-600: 3em;
+  --spacing-800: 4em;
+  --spacing-1000: 5em;
+  --spacing-1200: 6em;
+  --spacing-1400: 7em;
+  --spacing-1600: 8em;
+  --spacing-1800: 8.75em;
+
+  /* Radius Variant */
+  --radius-0: 0;
+  --radius-4: 0.25em;
+  --radius-4: 0.25em;
+  --radius-6: 0.375em;
+  --radius-8: 0.5em;
+  --radius-10: 0.625em;
+  --radius-12: 0.75em;
+  --radius-16: 1em;
+  --radius-20: 1.25em;
+  --radius-24: 1.5em;
+  --radius-full: 50%;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Sora";
+  /* font-size: var(--spacing-25); */
+}
+
+/* Lobotomized owl Concept */
+body * + * {
+  margin-top: 0.4em;
+}
+
+.hide-in-mobile {
+  display: none;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 48em) {
+  .hide-in-mobile {
+    display: block;
+  }
+}
