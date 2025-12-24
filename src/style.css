@@ -145,6 +145,10 @@ header > .best-wpm-score-wrapper > img {
   margin-right: 0.3em;
 }
 
+.wpm-score {
+  color: var(--Neutral-0);
+}
+
 /* Class used to capitalize text */
 .text-transform {
   text-transform: capitalize;
