@@ -76,8 +76,20 @@ html {
   padding: 0;
 }
 
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
 body {
   font-family: "Sora";
+  background-color: var(--Neutral-900);
+  color: var(--Neutral-400);
   /* font-size: var(--spacing-25); */
 }
 
@@ -99,8 +111,68 @@ body * + * {
   color: hsl(228, 45%, 44%);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  max-width: 76em;
+  margin-inline: auto;
+  border: 1px solid white;
+  display: grid;
+  row-gap: 1.3rem;
+  padding: 1em;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+header > .best-wpm-score-wrapper {
+  margin-left: auto;
+}
+header > .best-wpm-score-wrapper > img {
+  display: inline-block;
+  width: 0.95em;
+  margin-right: 0.3em;
+}
+
+/* Class used to capitalize text */
+.text-transform {
+  text-transform: capitalize;
+}
+
 @media (min-width: 48em) {
   .hide-in-mobile {
-    display: block;
+    display: inline;
+  }
+
+  .sr-only-desktop-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    clip: auto;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .container {
+    row-gap: 40px;
+  }
+
+  .text-transform {
+    text-transform: lowercase;
+  }
+
+  header {
+    align-items: end;
   }
 }

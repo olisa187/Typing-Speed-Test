@@ -11,19 +11,23 @@
   <title>Frontend Mentor | Typing Speed Test</title>
 
   <link rel="stylesheet" href="src/style.css">
+  <script src="./src/main.js" defer></script>
 </head>
 
 <body>
   <div class="container">
 
+    <h1 class="sr-only">Typing Speed Test</h1>
     <header>
-      <h1>Typing Speed Test</h1>
       <picture>
         <source media="(min-width: 768px)" srcset="assets/images/logo-large.svg">
         <img src="assets/images/logo-small.svg" alt="Logo">
       </picture>
-      <span class="bestWPMscore">
-        <span>Personal</span> best: 92 WPM
+      <span class="best-wpm-score-wrapper">
+        <img src="./assets/images/icon-personal-best.svg" alt="">
+        <span class="hide-in-mobile">Personal</span> <span class="text-transform">best</span>: <span
+          class="wpm-score">92</span>
+        WPM
       </span>
     </header>
 
@@ -126,16 +130,6 @@
       </div>
 
     </main>
-
-
-
-
-
-
-
-
-
-
 
     <!-- Test Complete End -->
 
