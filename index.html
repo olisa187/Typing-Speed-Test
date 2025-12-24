@@ -26,8 +26,8 @@
       <span class="best-wpm-score-wrapper">
         <img src="./assets/images/icon-personal-best.svg" alt="">
         <span class="hide-in-mobile">Personal</span> <span class="text-transform">best</span>: <span
-          class="wpm-score">92</span>
-        WPM
+          class="result wpm-score">92 WPM</span>
+
       </span>
     </header>
 
@@ -37,37 +37,42 @@
           <div class="typing-test-panel__status_info">
             <!-- WPM -->
             <div>WPM:</div>
-            <div>0</div>
+            <div class="result">0</div>
           </div>
 
           <div class="typing-test-panel__status_info">
             <!-- Accuracy -->
             <div>Accuracy:</div>
-            <div>100%</div>
+            <div class="result">100%</div>
           </div>
 
           <div class="typing-test-panel__status_info">
             <!-- Time -->
             <div>Time:</div>
-            <div>0.60</div>
+            <div class="result">0:46</div>
           </div>
         </div>
 
         <div class="typing-test-panel__mode">
           <div>
-            <span>Difficulty:</span>
-            <ul>
+            <span class="sr-only">Difficulty:</span>
+            <button type="button">
+              <span class="selected-option">Hard</span><img src="./assets/images/icon-down-arrow.svg"
+                alt="dropdown icon">
+            </button>
+            <ul class="drop-down">
               <li>Easy</li>
               <li>Medium</li>
               <li>Hard</li>
             </ul>
-
-
-
           </div>
           <div>
-            <span>Mode:</span>
-            <ul>
+            <span class="sr-only">Mode:</span>
+            <button type="button">
+              <span class="selected-option">Timed (60s)</span><img src="./assets/images/icon-down-arrow.svg"
+                alt="dropdown icon">
+            </button>
+            <ul class="drop-down">
               <li>Timed (60s)</li>
               <li>Passage</li>
             </ul>
