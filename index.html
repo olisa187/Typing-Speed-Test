@@ -73,7 +73,7 @@
                 alt="dropdown icon">
             </button>
             <ul class="drop-down">
-              <li class="selected-option"><a href="">Timed (60s)</a></li>
+              <li class="selected-option"><a href="" class="no-wrap">Timed (60s)</a></li>
               <li><a href="">Passage</a></li>
             </ul>
           </div>
@@ -81,8 +81,8 @@
       </div>
 
       <div class="type-speed-container">
-        <div>
-          <p>
+        <div class="show-on-load">
+          <p class="type-test-text">
             The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age
             trade
             networks. Obsidian from Anatolia, lapis lazuli from Afghanistan, and amber from the Baltic—all discovered in
@@ -92,34 +92,34 @@
             underestimated ancient peoples' navigational capabilities and their appetite for luxury goods," the lead
             researcher observed. "Globalization isn't as modern as we assume.
           </p>
-          <div class="">
+          <div class="type-speed-container__backdrop">
             <button type="button">Start Typing Test</button>
             <p>Or click the text and start typing</p>
           </div>
         </div>
 
-        <div>
-          <div>
+        <div class="show-on-test-completed">
+          <div class="show-on-test-completed__img">
             <img src="assets/images/icon-completed.svg" alt="completed" referrerpolicy="noopener">
           </div>
-          <div class="">
+          <div class="show-on-test-completed__message">
             <!-- Test Complete Start -->
             <h2>Test Complete!</h2>
             <p>Solid run. Keep pushing to beat your high score.</p>
           </div>
 
-          <div class="">
-            <div>
+          <div class="show-on-test-completed__result">
+            <div class="finished-result">
               <div>WPM: <!-- WPM --></div>
               <div>85</div>
             </div>
 
-            <div>
+            <div class="finished-result">
               <div>Accuracy: <!-- Accuracy --></div>
               <div>90%</div>
             </div>
 
-            <div>
+            <div class="finished-result">
               <div>Characters: <!-- Correct/Incorrect --></div>
               <div>
                 <span>120</span><span>/</span><span>5</span>
@@ -127,8 +127,8 @@
             </div>
           </div>
 
-          <div>
-            <button type="button">Go Again</button>
+          <div class="restart-btn-container">
+            <button type="button" class="restart-btn-container__reset">Go Again</button>
           </div>
 
         </div>

@@ -66,6 +66,8 @@
   --gap-32: 2em;
   --gap-40: 2.5em;
   --gap-64: 4em;
+
+  /* font-size: calc(0.5vw + 0.1em); */
 }
 
 html {
@@ -101,6 +103,7 @@ body {
   background-color: var(--Neutral-900);
   color: var(--Neutral-400);
   /* font-size: var(--spacing-25); */
+  padding: 0 2em;
 }
 
 /* Lobotomized owl Concept */
@@ -134,12 +137,12 @@ body * + * {
 
 .container {
   max-width: 76em;
-  margin-inline: auto;
-  /* border: 1px solid white; */
+  margin: 0 auto;
   display: grid;
   row-gap: var(--gap-32);
   padding: 1em;
   /* text-align: center; */
+  border: 1px solid white;
 }
 
 header {
@@ -179,9 +182,10 @@ main {
   margin-top: 0;
 }
 
-/* main > .typing-test-panel {
-  display: flex;
-} */
+main > .typing-test-panel {
+  border-bottom: 1px solid var(--Neutral-800);
+  padding-bottom: 0.8em;
+}
 
 main > .typing-test-panel > .typing-test-panel__status {
   display: flex;
@@ -190,16 +194,22 @@ main > .typing-test-panel > .typing-test-panel__status {
 
 .typing-test-panel__status > * {
   flex: 1;
-  border-right: 1px solid var(--Neutral-800);
+}
+
+.typing-test-panel__status > * + * {
+  border-left: 1px solid var(--Neutral-800);
+  margin-left: 1em;
+  padding-left: 1em;
 }
 
 .typing-test-panel__status * + * {
   margin-top: 0;
 }
 
+/* ghvdhvhjd */
 main > .typing-test-panel > .typing-test-panel__mode {
   display: flex;
-  gap: 10px;
+  gap: 0.625em;
   position: relative;
 }
 
@@ -254,9 +264,15 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   border-top: 1px solid var(--Neutral-400);
 }
 
-@media (min-width: 48em) {
+/* Tablet screen Layout */
+
+@media (min-width: 48.625em) {
   .hide-in-mobile {
     display: inline;
+  }
+
+  .no-wrap {
+    text-wrap: nowrap;
   }
 
   .sr-only-desktop-visible {
@@ -279,6 +295,9 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   header {
     align-items: end;
   }
+  main > .typing-test-panel > .typing-test-panel__mode {
+    gap: 0;
+  }
   main > .typing-test-panel > .typing-test-panel__mode > * {
     flex: 1;
     display: flex;
@@ -289,7 +308,7 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   main > .typing-test-panel > .typing-test-panel__mode > *:first-child {
     border-right: 1px solid var(--Neutral-800);
     padding-right: 0.9em;
-    margin-right: 1.4em;
+    margin-right: 0.8em;
   }
 
   .mobile-btn {
@@ -313,10 +332,32 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   }
   .drop-down li a {
     display: block;
-    padding: 0.4em 0.1em;
+    padding: 0.2em 0em;
   }
   .drop-down .selected-option {
     color: var(--Blue-400);
     border-color: var(--Blue-400);
+  }
+
+  .typing-test-panel__status > * {
+    display: flex;
+    align-items: center;
+    flex: 0; /* Restting */
+    gap: 1.2em;
+  }
+}
+
+@media (min-width: 62.6em) {
+  main > .typing-test-panel {
+    display: flex;
+  }
+  main > .typing-test-panel > * {
+    flex: 1;
+  }
+  main > .typing-test-panel * {
+    margin-top: 0;
+  }
+  main > .typing-test-panel > .typing-test-panel__status {
+    margin-right: 0.7em;
   }
 }
