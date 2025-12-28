@@ -10,7 +10,7 @@
   --Neutral-400: hsl(240 1 59);
   --Neutral-500: hsl(240 3% 46%);
   --Neutral-800: hsl(0 0 15%);
-  --Neutral-900: hsl(0 0 7%);
+  --Neutral-900: hsl(0, 0%, 7%);
   /* Blue Variant */
   --Blue-400: hsl(210 100% 65%);
   --Blue-600: hsl(210 100% 55%);
@@ -24,8 +24,11 @@
   /* Font size */
   --fs-12: 0.25rem;
   --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
   --fs-24: 1.5rem;
+  --fs-30: 1.875rem;
   --fs-32: 2rem;
+  --fs-40: 2.5rem;
   --fs-48: 3rem;
 
   /* Spacing Variant */
@@ -84,7 +87,8 @@ html {
 }
 
 img,
-picture {
+picture,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -264,6 +268,75 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   border-top: 1px solid var(--Neutral-400);
 }
 
+.type-speed-container {
+  /* text-align: center; */
+  position: relative;
+}
+
+.type-speed-container__backdrop {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: -2.5em;
+  left: -2em;
+  right: -2em;
+  bottom: 0;
+
+  background-color: hsl(0 0 3% / 0.75);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.show-on-load > .type-test-text {
+  font-size: var(--fs-30);
+}
+
+.type-speed-container {
+  border-bottom: 1px solid var(--Neutral-800);
+  padding-bottom: var(--gap-32);
+}
+
+.btn {
+  font-size: var(--fs-20);
+  font-weight: 500;
+  padding: 0.625em 1em;
+  border: 0;
+  border-radius: var(--radius-10);
+  outline: none;
+  cursor: pointer;
+  color: var(--Neutral-0);
+}
+
+.start-btn {
+  background-color: var(--Blue-600);
+}
+
+.restart-btn {
+  background-color: var(--Neutral-800);
+}
+
+.try-again-btn {
+  font-weight: 600;
+  color: var(--Neutral-900);
+  padding-block: 0.8em;
+}
+
+.try-again-btn,
+.restart-btn {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 0.7em;
+}
+
+.try-again-btn > span,
+.restart-btn > span {
+  margin-top: 0;
+}
+
 /* Tablet screen Layout */
 
 @media (min-width: 48.625em) {
@@ -345,6 +418,11 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
     flex: 0; /* Restting */
     gap: 1.2em;
   }
+
+  /* Typing section */
+  .show-on-load > .type-test-text {
+    font-size: var(--fs-40);
+  }
 }
 
 @media (min-width: 62.6em) {
@@ -360,4 +438,8 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   main > .typing-test-panel > .typing-test-panel__status {
     margin-right: 0.7em;
   }
+}
+
+.hide {
+  display: none;
 }
