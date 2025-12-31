@@ -27,7 +27,6 @@
         <img src="./assets/images/icon-personal-best.svg" alt="">
         <span class="hide-in-mobile">Personal</span> <span class="text-transform">best</span>: <span
           class="result wpm-score">92 WPM</span>
-
       </span>
     </header>
 
@@ -61,9 +60,15 @@
                 alt="dropdown icon">
             </button>
             <ul class="drop-down">
-              <li><a href="">Easy</a></li>
-              <li><a href="">Medium</a></li>
-              <li class="selected-option"><a href="">Hard</a></li>
+              <li class="panel-btn-container"><button type="button">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Easy</span>
+                </button></li>
+              <li class="panel-btn-container"><button type="button">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Medium</span>
+                </button></li>
+              <li class="panel-btn-container selected-option"><button type="button">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Hard</span>
+                </button></li>
             </ul>
           </div>
           <div class="">
@@ -73,15 +78,19 @@
                 alt="dropdown icon">
             </button>
             <ul class="drop-down">
-              <li class="selected-option"><a href="" class="no-wrap">Timed (60s)</a></li>
-              <li><a href="">Passage</a></li>
+              <li class="panel-btn-container selected-option"><button type="button" class="no-wrap">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Timed (60s)</span>
+                </button></li>
+              <li class="panel-btn-container"><button type="button">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Passage</span>
+                </button></li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="type-speed-container">
-        <div class="show-on-load hide">
+        <div class="show-on-load ">
           <p class="type-test-text">
             The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age
             trade
@@ -92,13 +101,13 @@
             underestimated ancient peoples' navigational capabilities and their appetite for luxury goods," the lead
             researcher observed. "Globalization isn't as modern as we assume.
           </p>
-          <div class="type-speed-container__backdrop hide">
+          <div class="type-speed-container__backdrop">
             <button type="button" class="btn start-btn">Start Typing Test</button>
             <p>Or click the text and start typing</p>
           </div>
         </div>
 
-        <div class="show-on-test-completed">
+        <div class="show-on-test-completed hide">
           <div class="show-on-test-completed__img">
             <img src="assets/images/icon-completed.svg" alt="completed" referrerpolicy="noopener">
           </div>
@@ -111,18 +120,19 @@
           <div class="show-on-test-completed__result">
             <div class="finished-result">
               <div>WPM: <!-- WPM --></div>
-              <div>85</div>
+              <div class="result">85</div>
             </div>
 
             <div class="finished-result">
               <div>Accuracy: <!-- Accuracy --></div>
-              <div>90%</div>
+              <div class="result color-red">90%</div>
             </div>
 
             <div class="finished-result">
               <div>Characters: <!-- Correct/Incorrect --></div>
               <div>
-                <span>120</span><span>/</span><span>5</span>
+                <span class="result color-green">120</span><span class="result color-gray">/</span><span
+                  class="result color-red">5</span>
               </div>
             </div>
           </div>
