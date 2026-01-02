@@ -217,11 +217,11 @@ main > .typing-test-panel > .typing-test-panel__mode {
   position: relative;
 }
 
-main > .typing-test-panel > .typing-test-panel__mode:hover .drop-down {
+/* main > .typing-test-panel > .typing-test-panel__mode:hover .drop-down {
   display: flex;
   flex-direction: column;
   row-gap: 8px;
-}
+} */
 
 main > .typing-test-panel > .typing-test-panel__mode > * {
   flex: 1;
@@ -284,11 +284,11 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   /* background-color: var(--Neutral-900); */
   border-radius: var(--radius-full);
 }
-.drop-down > li > button:hover > .dot-symbol,
+/* .drop-down > li > button:hover > .dot-symbol,
 .drop-down > li > button:active > .dot-symbol {
   border: 6px solid var(--Blue-600);
   background-color: var(--Neutral-900);
-}
+} */
 
 .drop-down li button {
   display: flex;
@@ -407,6 +407,10 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
 .color-gray {
   color: var(--Neutral-500);
 }
+
+.color-amber {
+  color: var(--Yellow-400);
+}
 .show-on-test-completed__img {
   position: relative;
 }
@@ -434,6 +438,35 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   bottom: -1.3em;
   left: -1.3em;
   z-index: -2;
+}
+
+.pending {
+  display: inline-block;
+  background-color: hsl(240 1 59 / 0.3);
+  border-radius: 0.08em;
+  animation: blink-bg 1s infinite alternate;
+}
+
+@keyframes blink-bg {
+  0% {
+    background-color: hsl(240 1 59 / 0);
+  }
+
+  25% {
+    background-color: hsl(240 1 59 / 0.1);
+  }
+
+  50% {
+    background-color: hsl(240 1 59 / 0.2);
+  }
+
+  75% {
+    background-color: hsl(240 1 59 / 0.25);
+  }
+
+  100% {
+    background-color: hsl(240 1 59 / 0.3);
+  }
 }
 
 /* Tablet screen Layout */
@@ -502,21 +535,27 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
     z-index: 0;
     margin-top: 0;
   }
-  .drop-down li {
+  .drop-down li + li {
+    /* text-align: center;
+    border: 1px solid var(--Neutral-400);
+    border-radius: var(--radius-8); */
+    margin-top: 0;
+    border: none;
+  }
+
+  .drop-down li.panel-btn-container button {
+    display: flex;
+    padding: 0.45em 1em;
+    width: 100%;
+    cursor: pointer;
+
     text-align: center;
     border: 1px solid var(--Neutral-400);
     border-radius: var(--radius-8);
     margin-top: 0;
   }
 
-  .drop-down li.panel-btn-container button {
-    display: flex;
-    padding: 0.45em 0.9em;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .drop-down .selected-option {
+  .drop-down li.panel-btn-container .selected-option {
     color: var(--Blue-400);
     border-color: var(--Blue-400);
   }

@@ -42,13 +42,13 @@
           <div class="typing-test-panel__status_info">
             <!-- Accuracy -->
             <div>Accuracy:</div>
-            <div class="result">100%</div>
+            <div class="color-red result accuracy-tracker">100%</div>
           </div>
 
           <div class="typing-test-panel__status_info">
             <!-- Time -->
             <div>Time:</div>
-            <div class="result">0:46</div>
+            <div class="color-amber result timmer-tracker ">0:46</div>
           </div>
         </div>
 
@@ -59,14 +59,14 @@
               <span class="selected-option">Hard</span><img src="./assets/images/icon-down-arrow.svg"
                 alt="dropdown icon">
             </button>
-            <ul class="drop-down">
+            <ul class="drop-down difficulty">
               <li class="panel-btn-container"><button type="button">
                   <span class="hide-in-desktop dot-symbol"></span><span>Easy</span>
                 </button></li>
               <li class="panel-btn-container"><button type="button">
                   <span class="hide-in-desktop dot-symbol"></span><span>Medium</span>
                 </button></li>
-              <li class="panel-btn-container selected-option"><button type="button">
+              <li class="panel-btn-container"><button type="button" class="selected-option">
                   <span class="hide-in-desktop dot-symbol"></span><span>Hard</span>
                 </button></li>
             </ul>
@@ -74,11 +74,10 @@
           <div class="">
             <span class="sr-only  sr-only-desktop-visible">Mode:</span>
             <button type="button" class="mobile-btn">
-              <span class="selected-option">Timed (60s)</span><img src="./assets/images/icon-down-arrow.svg"
-                alt="dropdown icon">
+              <span class="">Timed (60s)</span><img src="./assets/images/icon-down-arrow.svg" alt="dropdown icon">
             </button>
-            <ul class="drop-down">
-              <li class="panel-btn-container selected-option"><button type="button" class="no-wrap">
+            <ul class="drop-down mode">
+              <li class="panel-btn-container"><button type="button" class="no-wrap selected-option">
                   <span class="hide-in-desktop dot-symbol"></span><span>Timed (60s)</span>
                 </button></li>
               <li class="panel-btn-container"><button type="button">
