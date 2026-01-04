@@ -1,11 +1,18 @@
 // get all variables
 
+// Declare global variable
+let difficultySelected = "medium";
+let modeSelected = "";
+let timeInterval;
+
 function getRandomInt(num) {
   return Math.floor(Math.random() * (num + 1));
 }
 
 function setDifficulty(param) {
   console.log(param.toLowerCase());
+
+  difficultySelected = param.toLowerCase();
 
   const getData = async () => {
     const data = await readJSONData("./src/data.json");
@@ -19,9 +26,11 @@ function setDifficulty(param) {
   //   return param.toLowerCase();
 }
 
-function setMode(param) {
+function setMode(param, query) {
   console.log(param, param === "Timed (60s)" ? 60 : "free");
-  return param === "Timed (60s)" ? 60 : "free";
+  const timeValue = param === "Timed (60s)" ? `0:59` : "free";
+  modeSelected = param.toLowerCase();
+  document.querySelector(query).innerText = timeValue;
 }
 
 function spanText(query, data) {
@@ -35,7 +44,6 @@ function spanText(query, data) {
       splittedText += `<span>${letter}</span>`;
     }
   });
-  //   console.log(splittedText);
   // location to insert
   document.querySelector(query).innerHTML = splittedText;
 }
@@ -53,6 +61,7 @@ function startTest() {
       .classList.add("hide");
 
     restartBTN.classList.remove("hide");
+    timeChange(".timer-tracker", 60);
   });
 }
 
@@ -77,7 +86,7 @@ function panelSetting(parentClassName, selectedClassName) {
 
       parentClassName === "difficulty"
         ? setDifficulty(e.target.innerText)
-        : setMode(e.target.innerText);
+        : setMode(e.target.innerText, ".timer-tracker");
     });
   });
 }
@@ -91,13 +100,60 @@ async function readJSONData(filePath) {
   }
 }
 
-function getRandomText(panelSettingFunc, randomIntFunc, data) {
-  const difficulty = panelSettingFunc("difficulty", "selected-option");
-  console.log(difficulty);
-  //   const randomInt = randomIntFunc(data["difficulty"].length);
-  //   const text = data[difficulty][randomInt];
-  //   console.log(text);
-  //   return text;
+function timeChange(query) {
+  let second_remaining = 59;
+
+  if (modeSelected !== "passage") {
+    timeInterval = setInterval(() => {
+      document.querySelector(query).innerText = `${
+        second_remaining === 59 ? 0 : 0
+      }:${
+        second_remaining > 9 ? second_remaining-- : "0" + second_remaining--
+      }`;
+
+      if (second_remaining === -1) done();
+    }, 1000);
+  }
+  // console.log(second_remaining);
+}
+
+function done() {
+  clearInterval(timeInterval);
+
+  const hidePanel = document.getElementsByClassName("typing-test-panel");
+  const textcontainer = document.getElementsByClassName("show-on-load");
+  const restartBTN = document.getElementsByClassName("restart-container");
+  const showResult = document.getElementsByClassName("show-on-test-completed");
+
+  Array.from(hidePanel).forEach((el) => el.classList.add("hide"));
+  Array.from(textcontainer).forEach((el) => el.classList.add("hide"));
+  Array.from(restartBTN).forEach((el) => el.classList.add("hide"));
+  Array.from(showResult).forEach((el) => el.classList.remove("hide"));
+}
+
+function restartTest() {
+  const hidePanel = document.getElementsByClassName("typing-test-panel");
+  const textcontainer = document.getElementsByClassName("show-on-load");
+  const backdrop = document.getElementsByClassName(
+    "type-speed-container__backdrop"
+  );
+  const restartBTN = document.getElementsByClassName("restart-container");
+  const showResult = document.getElementsByClassName("show-on-test-completed");
+
+  Array.from(hidePanel).forEach((el) => el.classList.remove("hide"));
+  Array.from(textcontainer).forEach((el) => el.classList.remove("hide"));
+  Array.from(backdrop).forEach((el) => el.classList.remove("hide"));
+  Array.from(restartBTN).forEach((el) => el.classList.add("hide"));
+  Array.from(showResult).forEach((el) => el.classList.add("hide"));
+
+  clearInterval(timeInterval);
+}
+
+function reset() {
+  const reloadBTN = document.getElementsByClassName("reload-btn");
+  Array.from(reloadBTN).forEach((el) =>
+    el.addEventListener("click", restartTest)
+  );
 }
 
 function init() {
@@ -105,6 +161,14 @@ function init() {
   panelSetting("mode", "selected-option");
   //   spanText(".type-test-text");
   panelSetting("difficulty", "selected-option");
+
+  // run on load / refresh
+  setDifficulty(difficultySelected);
+
+  reset();
+  //   done();
+
+  //   restartTest();
   //   (async () => {
   //     const data = await readJSONData("./src/data.json");
   //     console.log(data);

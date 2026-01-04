@@ -314,8 +314,8 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
 
   position: absolute;
   top: -2.5em;
-  left: -2em;
-  right: -2em;
+  left: -0.5em;
+  right: -0.5em;
   bottom: 0;
 
   background-color: hsl(0 0 3% / 0.75);
