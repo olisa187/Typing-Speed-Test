@@ -260,10 +260,6 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   z-index: 2;
 }
 
-.drop-down li {
-  /* padding-inline: 20px; */
-}
-
 .drop-down li + li {
   border-top: 1px solid var(--Neutral-400);
 }
@@ -440,8 +436,17 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   z-index: -2;
 }
 
+.correct {
+  color: var(--Green-500);
+}
+
+.error {
+  color: var(--Red-500);
+  border-bottom: 1.5px solid var(--Red-500);
+}
+
 .pending {
-  display: inline-block;
+  /* display: inline; */
   background-color: hsl(240 1 59 / 0.3);
   border-radius: 0.08em;
   animation: blink-bg 1s infinite alternate;

@@ -3,6 +3,13 @@
 // Declare global variable
 let difficultySelected = "medium";
 let modeSelected = "";
+let wpmValue = 0;
+let accuracyValue = 0;
+let userInputSet = [];
+let mainTextSet = [];
+let correctSet = [];
+let errorSet = [];
+let currentTextPosition = 0;
 let timeInterval;
 
 function getRandomInt(num) {
@@ -10,7 +17,7 @@ function getRandomInt(num) {
 }
 
 function setDifficulty(param) {
-  console.log(param.toLowerCase());
+  // console.log(param.toLowerCase());
 
   difficultySelected = param.toLowerCase();
 
@@ -20,6 +27,7 @@ function setDifficulty(param) {
     const randomInt = getRandomInt(data[param.toLowerCase()].length);
     const text = data[param.toLowerCase()][randomInt];
     // console.log(text.text);
+    mainTextSet = [...text.text];
     spanText(".type-test-text", text.text);
   };
   getData();
@@ -39,9 +47,9 @@ function spanText(query, data) {
   let splittedText = "";
   paragraph.split("").forEach((letter, i) => {
     if (i === 0) {
-      splittedText += `<span class="pending">${letter}</span>`;
+      splittedText += `<span class="pending" data-index="0">${letter}</span>`;
     } else {
-      splittedText += `<span>${letter}</span>`;
+      splittedText += `<span data-index="${i}">${letter}</span>`;
     }
   });
   // location to insert
@@ -62,6 +70,7 @@ function startTest() {
 
     restartBTN.classList.remove("hide");
     timeChange(".timer-tracker", 60);
+    KeyInputListener();
   });
 }
 
@@ -147,13 +156,64 @@ function restartTest() {
   Array.from(showResult).forEach((el) => el.classList.add("hide"));
 
   clearInterval(timeInterval);
+  wpmValue = 0;
+  accuracyValue = 0;
+  userInputSet = [];
+  mainTextSet = [];
+  correctSet = [];
+  errorSet = [];
+  currentTextPosition = 0;
+  window.removeEventListener("keyup", handleInput);
+  setDifficulty(difficultySelected);
 }
 
 function reset() {
   const reloadBTN = document.getElementsByClassName("reload-btn");
-  Array.from(reloadBTN).forEach((el) =>
-    el.addEventListener("click", restartTest)
-  );
+  Array.from(reloadBTN).forEach((el) => {
+    el.addEventListener("click", restartTest);
+  });
+}
+
+function nextText(index) {
+  if (index < mainTextSet.length) {
+    document
+      .querySelector(`span[data-index="${index}"]`)
+      .classList.remove("pending");
+    document
+      .querySelector(
+        `span[data-index="${
+          index + 1 < mainTextSet.length ? index + 1 : index
+        }"]`
+      )
+      .classList.add("pending");
+  }
+}
+
+function handleInput(e) {
+  // console.log(e.key);
+  if (e.key !== "Shift" && e.key !== "CapsLock") {
+    userInputSet.push(e.key);
+    if (
+      mainTextSet[currentTextPosition] === userInputSet[currentTextPosition]
+    ) {
+      correctSet.push(e.key);
+      document
+        .querySelector(`span[data-index="${currentTextPosition}"]`)
+        .classList.add("correct");
+    } else {
+      errorSet.push(e.key);
+      document
+        .querySelector(`span[data-index="${currentTextPosition}"]`)
+        .classList.add("error");
+    }
+    nextText(currentTextPosition);
+    currentTextPosition++;
+  }
+  currentTextPosition === mainTextSet.length ? done() : "";
+}
+
+function KeyInputListener() {
+  window.addEventListener("keyup", handleInput);
 }
 
 function init() {
@@ -165,15 +225,9 @@ function init() {
   // run on load / refresh
   setDifficulty(difficultySelected);
 
-  reset();
-  //   done();
+  // getKeyInput();
 
-  //   restartTest();
-  //   (async () => {
-  //     const data = await readJSONData("./src/data.json");
-  //     console.log(data);
-  //   })();
-  //   getRandomText(panelSetting, getRandomInt, readJSONData);
+  reset();
 }
 
 init();
