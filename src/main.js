@@ -4,12 +4,13 @@
 let difficultySelected = "medium";
 let modeSelected = "";
 let wpmValue = 0;
-let accuracyValue = 0;
+let accuracyValue = 100;
 let userInputSet = [];
 let mainTextSet = [];
 let correctSet = [];
 let errorSet = [];
 let currentTextPosition = 0;
+let currentTime = 60;
 let timeInterval;
 
 function getRandomInt(num) {
@@ -110,20 +111,22 @@ async function readJSONData(filePath) {
 }
 
 function timeChange(query) {
-  let second_remaining = 59;
-
   if (modeSelected !== "passage") {
     timeInterval = setInterval(() => {
-      document.querySelector(query).innerText = `${
-        second_remaining === 59 ? 0 : 0
-      }:${
-        second_remaining > 9 ? second_remaining-- : "0" + second_remaining--
-      }`;
-
-      if (second_remaining === -1) done();
+      document.querySelector(query).innerText = timeUpdate(currentTime);
+      currentTime--;
+      if (currentTime === -1) done();
     }, 1000);
   }
-  // console.log(second_remaining);
+}
+
+// v2 of time change function to be renamed timeUpdate
+function timeUpdate(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  const result = `${String(mins)}:${String(secs).padStart(2, "0")}`;
+  // console.log(result);
+  return result;
 }
 
 function done() {
@@ -134,10 +137,22 @@ function done() {
   const restartBTN = document.getElementsByClassName("restart-container");
   const showResult = document.getElementsByClassName("show-on-test-completed");
 
+  // var to write to the document when timer or user completes the typing
+  const wpmFinalValue = document.querySelector(".wpm-final");
+  const accuracyFinalValue = document.querySelector(".acurracy-final");
+  const totalCharacterFinalValue = document.querySelector(".characters-final");
+  const totalErrorFinalValue = document.querySelector(".error-final");
+
   Array.from(hidePanel).forEach((el) => el.classList.add("hide"));
   Array.from(textcontainer).forEach((el) => el.classList.add("hide"));
   Array.from(restartBTN).forEach((el) => el.classList.add("hide"));
   Array.from(showResult).forEach((el) => el.classList.remove("hide"));
+
+  // write to the document the final values
+  wpmFinalValue.innerText = wpmValue.toFixed(0);
+  accuracyFinalValue.innerText = accuracyValue;
+  totalCharacterFinalValue.innerText = userInputSet.length;
+  totalErrorFinalValue.innerText = errorSet.length;
 }
 
 function restartTest() {
@@ -157,12 +172,13 @@ function restartTest() {
 
   clearInterval(timeInterval);
   wpmValue = 0;
-  accuracyValue = 0;
+  accuracyValue = 100;
   userInputSet = [];
   mainTextSet = [];
   correctSet = [];
   errorSet = [];
   currentTextPosition = 0;
+  currentTime = 60;
   window.removeEventListener("keyup", handleInput);
   setDifficulty(difficultySelected);
 }
@@ -209,11 +225,44 @@ function handleInput(e) {
     nextText(currentTextPosition);
     currentTextPosition++;
   }
+  // accuracyCalculator(correctSet.length, userInputSet.length);
+  writeResult(
+    "div.accuracy-tracker",
+    accuracyCalculator,
+    correctSet.length,
+    userInputSet.length
+  );
+
+  writeResult(".wpm-tracker", wpmCalculator, userInputSet.length, currentTime);
+  // wpmCalculator(userInputSet.length, currentTime);
   currentTextPosition === mainTextSet.length ? done() : "";
 }
 
 function KeyInputListener() {
   window.addEventListener("keyup", handleInput);
+}
+
+function accuracyCalculator(upperBound, lowerBound) {
+  const cal = (upperBound / lowerBound) * 100;
+  // console.log(`${!isNaN(cal.toFixed(0)) ? cal.toFixed(0) : 0}%`);
+  accuracyValue = `${!isNaN(cal.toFixed(0)) ? cal.toFixed(0) : 0}%`;
+  return `${!isNaN(cal.toFixed(0)) ? cal.toFixed(0) : 0}%`;
+}
+
+function wpmCalculator(totalCharacter, timeValue) {
+  // this function calculates the gross wpm
+  const grossWPM = totalCharacter / 5 / (timeValue / 60); // in seconds divifing by 60 to give time in minutes
+  // console.log(grossWPM.toFixed(0));
+  wpmValue = grossWPM;
+  return grossWPM.toFixed(0);
+  // (totalCharacter / 5 / (timeValue / 1000)) * 60
+}
+
+function writeResult(query, callback, ...args) {
+  const result = callback(...args);
+  // console.log(result);
+  const resultPosition = document.querySelector(query);
+  resultPosition.innerText = result;
 }
 
 function init() {
