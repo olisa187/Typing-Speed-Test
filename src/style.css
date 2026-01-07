@@ -217,12 +217,6 @@ main > .typing-test-panel > .typing-test-panel__mode {
   position: relative;
 }
 
-/* main > .typing-test-panel > .typing-test-panel__mode:hover .drop-down {
-  display: flex;
-  flex-direction: column;
-  row-gap: 8px;
-} */
-
 main > .typing-test-panel > .typing-test-panel__mode > * {
   flex: 1;
 }
@@ -236,7 +230,7 @@ main > .typing-test-panel > .typing-test-panel__mode .mobile-btn {
   color: var(--Neutral-0);
   cursor: pointer;
 }
-
+/* Test two */
 /* main > .typing-test-panel > .typing-test-panel__mode button:hover {
   display: block;
 } */
@@ -260,6 +254,14 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   z-index: 2;
 }
 
+/* Button drop one test */
+/* main > .typing-test-panel > .typing-test-panel__mode:hover */
+.show-drop-down {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
 .drop-down li + li {
   border-top: 1px solid var(--Neutral-400);
 }
@@ -280,11 +282,19 @@ main > .typing-test-panel > .typing-test-panel__mode > * + * {
   /* background-color: var(--Neutral-900); */
   border-radius: var(--radius-full);
 }
+
+/* Test two */
 /* .drop-down > li > button:hover > .dot-symbol,
 .drop-down > li > button:active > .dot-symbol {
   border: 6px solid var(--Blue-600);
   background-color: var(--Neutral-900);
 } */
+
+/* .difficulty > li > button:hover > .dot-symbol, */
+.selected-option .dot-symbol {
+  border: 6px solid var(--Blue-600);
+  background-color: var(--Neutral-900);
+}
 
 .drop-down li button {
   display: flex;

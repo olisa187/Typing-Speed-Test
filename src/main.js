@@ -179,6 +179,16 @@ function restartTest() {
   errorSet = [];
   currentTextPosition = 0;
   currentTime = 60;
+
+  // var to write to the document when timer or user completes the typing
+  const wpmTracker = document.querySelector(".wpm-tracker");
+  const accuracyTracker = document.querySelector(".accuracy-tracker");
+  const timerTracker = document.querySelector(".timer-tracker");
+  // write to the document the final values
+  wpmTracker.innerText = wpmValue.toFixed(0);
+  accuracyTracker.innerText = `${accuracyValue}%`;
+  timerTracker.innerText = timeUpdate(currentTime);
+
   window.removeEventListener("keyup", handleInput);
   setDifficulty(difficultySelected);
 }
@@ -265,6 +275,27 @@ function writeResult(query, callback, ...args) {
   resultPosition.innerText = result;
 }
 
+function handleMobileDropDown() {
+  const mobileBTN = document.getElementsByClassName("mobile-btn");
+  Array.from(mobileBTN).forEach((el) => {
+    el.addEventListener("click", (e) => {
+      // let buttonClicked = `.${e.target.getAttribute("data-value")}`;
+      // const removeDropDown = document.querySelector(".show-drop-down");
+      // removeDropDown?.classList?.contains("show-drop-down")
+      //   ? removeDropDown.classList.remove("show-drop-down")
+      //   : "";
+      e.preventDefault();
+      console.log(`${e.target.getAttribute("data-value")}`);
+      let elementTarget = document.querySelector(
+        `.${e.target.getAttribute("data-value")}`
+      );
+      elementTarget.classList.contains("show-drop-down")
+        ? elementTarget.classList.remove("show-drop-down")
+        : elementTarget.classList.add("show-drop-down");
+    });
+  });
+}
+
 function init() {
   startTest();
   panelSetting("mode", "selected-option");
@@ -275,6 +306,8 @@ function init() {
   setDifficulty(difficultySelected);
 
   // getKeyInput();
+
+  handleMobileDropDown();
 
   reset();
 }
