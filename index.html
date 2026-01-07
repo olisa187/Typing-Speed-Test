@@ -26,8 +26,7 @@
       <span class="best-wpm-score-wrapper">
         <img src="./assets/images/icon-personal-best.svg" alt="">
         <span class="hide-in-mobile">Personal</span> <span class="text-transform">best</span>: <span
-          class="wpm-score">92</span>
-        WPM
+          class="result wpm-score">92 WPM</span>
       </span>
     </header>
 
@@ -37,47 +36,62 @@
           <div class="typing-test-panel__status_info">
             <!-- WPM -->
             <div>WPM:</div>
-            <div>0</div>
+            <div class="result wpm-tracker">0</div>
           </div>
 
           <div class="typing-test-panel__status_info">
             <!-- Accuracy -->
             <div>Accuracy:</div>
-            <div>100%</div>
+            <div class="color-red result accuracy-tracker">100%</div>
           </div>
 
           <div class="typing-test-panel__status_info">
             <!-- Time -->
             <div>Time:</div>
-            <div>0.60</div>
+            <div class="color-amber result timer-tracker ">1:00</div>
           </div>
         </div>
 
         <div class="typing-test-panel__mode">
-          <div>
-            <span>Difficulty:</span>
-            <ul>
-              <li>Easy</li>
-              <li>Medium</li>
-              <li>Hard</li>
+          <div class="">
+            <span class="sr-only  sr-only-desktop-visible">Difficulty:</span>
+            <button type="button" class="mobile-btn" data-value="difficulty">
+              <span class="display-selected-diffculty">Hard</span><img src="./assets/images/icon-down-arrow.svg"
+                alt="dropdown icon">
+            </button>
+            <ul class="drop-down difficulty">
+              <li class="panel-btn-container"><button type="button">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Easy</span>
+                </button></li>
+              <li class="panel-btn-container"><button type="button" class="selected-option">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Medium</span>
+                </button></li>
+              <li class="panel-btn-container"><button type="button">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Hard</span>
+                </button></li>
             </ul>
-
-
-
           </div>
-          <div>
-            <span>Mode:</span>
-            <ul>
-              <li>Timed (60s)</li>
-              <li>Passage</li>
+          <div class="">
+            <span class="sr-only  sr-only-desktop-visible">Mode:</span>
+            <button type="button" class="mobile-btn" data-value="mode">
+              <span class="display-selected-mode">Timed (60s)</span><img src="./assets/images/icon-down-arrow.svg"
+                alt="dropdown icon">
+            </button>
+            <ul class="drop-down mode">
+              <li class="panel-btn-container"><button type="button" class="no-wrap selected-option">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Timed (60s)</span>
+                </button></li>
+              <li class="panel-btn-container"><button type="button">
+                  <span class="hide-in-desktop dot-symbol"></span><span>Passage</span>
+                </button></li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="type-speed-container">
-        <div>
-          <p>
+        <div class="show-on-load ">
+          <p class="type-test-text">
             The archaeological expedition unearthed artifacts that complicated prevailing theories about Bronze Age
             trade
             networks. Obsidian from Anatolia, lapis lazuli from Afghanistan, and amber from the Baltic—all discovered in
@@ -87,48 +101,57 @@
             underestimated ancient peoples' navigational capabilities and their appetite for luxury goods," the lead
             researcher observed. "Globalization isn't as modern as we assume.
           </p>
-          <div class="">
-            <button type="button">Start Typing Test</button>
+          <div class="type-speed-container__backdrop">
+            <button type="button" class="btn start-btn">Start Typing Test</button>
             <p>Or click the text and start typing</p>
           </div>
         </div>
 
-        <div>
-          <div>
+        <div class="show-on-test-completed hide">
+          <div class="show-on-test-completed__img">
             <img src="assets/images/icon-completed.svg" alt="completed" referrerpolicy="noopener">
           </div>
-          <div class="">
+          <div class="show-on-test-completed__message">
             <!-- Test Complete Start -->
             <h2>Test Complete!</h2>
             <p>Solid run. Keep pushing to beat your high score.</p>
           </div>
 
-          <div class="">
-            <div>
+          <div class="show-on-test-completed__result">
+            <div class="finished-result">
               <div>WPM: <!-- WPM --></div>
-              <div>85</div>
+              <div class="result wpm-final">85</div>
             </div>
 
-            <div>
+            <div class="finished-result">
               <div>Accuracy: <!-- Accuracy --></div>
-              <div>90%</div>
+              <div class="result color-red acurracy-final">90%</div>
             </div>
 
-            <div>
+            <div class="finished-result">
               <div>Characters: <!-- Correct/Incorrect --></div>
               <div>
-                <span>120</span><span>/</span><span>5</span>
+                <span class="result color-green characters-final">120</span><span
+                  class="result color-gray">/</span><span class="result color-red error-final">5</span>
               </div>
             </div>
           </div>
 
-          <div>
-            <button type="button">Go Again</button>
+          <div class="try-again-btn-container">
+            <button type="button" class="btn try-again-btn reload-btn"><span>Go Again</span><span><svg
+                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                  <path fill="#121212"
+                    d="M1.563 1.281h.949c.246 0 .422.211.422.457l-.07 3.446a8.6 8.6 0 0 1 7.277-3.868c4.816 0 8.718 3.938 8.718 8.72-.035 4.816-3.937 8.683-8.718 8.683a8.86 8.86 0 0 1-5.871-2.215.446.446 0 0 1 0-.633l.703-.703c.14-.14.386-.14.562 0 1.23 1.09 2.813 1.723 4.606 1.723A6.88 6.88 0 0 0 17.03 10c0-3.797-3.093-6.89-6.89-6.89-2.813 0-5.203 1.687-6.293 4.078l4.43-.106c.245 0 .456.176.456.422v.95c0 .245-.21.421-.421.421h-6.75a.406.406 0 0 1-.422-.422v-6.75c0-.21.175-.422.422-.422" />
+                </svg></span></button>
           </div>
 
         </div>
-      </div>
 
+      </div>
+      <div class="restart-container hide">
+        <button type="button" class="btn restart-btn reload-btn"><span>Restart Test</span><span><img
+              src="./assets/images/icon-restart.svg" alt="restart icon"></span></button>
+      </div>
     </main>
 
     <!-- Test Complete End -->
