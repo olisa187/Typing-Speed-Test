@@ -104,7 +104,7 @@ a {
 }
 
 body {
-  font-family: "Sora";
+  font-family: "Sora", Arial, Helvetica, sans-serif;
   background-color: var(--Neutral-900);
   color: var(--Neutral-400);
   /* font-size: var(--spacing-25); */

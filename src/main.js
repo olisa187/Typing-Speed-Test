@@ -1,5 +1,3 @@
-// get all variables
-
 // Declare global variable
 let difficultySelected = "medium";
 let modeSelected = "";
@@ -22,6 +20,8 @@ function setDifficulty(param) {
 
   difficultySelected = param.toLowerCase();
 
+  document.querySelector(".display-selected-diffculty").innerText = param;
+
   const getData = async () => {
     const data = await readJSONData("./src/data.json");
     // console.log(data);
@@ -36,10 +36,12 @@ function setDifficulty(param) {
 }
 
 function setMode(param, query) {
-  console.log(param, param === "Timed (60s)" ? 60 : "free");
-  const timeValue = param === "Timed (60s)" ? `0:59` : "free";
+  // console.log(param, param === "Timed (60s)" ? 60 : "free");
+  const timeValue = param === "Timed (60s)" ? `1:00` : "free";
   modeSelected = param.toLowerCase();
   document.querySelector(query).innerText = timeValue;
+  document.querySelector(".display-selected-mode").innerText = param;
+  // Write the selected value to the button
 }
 
 function spanText(query, data) {
@@ -261,7 +263,7 @@ function accuracyCalculator(upperBound, lowerBound) {
 
 function wpmCalculator(totalCharacter, timeValue) {
   // this function calculates the gross wpm
-  const grossWPM = totalCharacter / 5 / (timeValue / 60); // in seconds divifing by 60 to give time in minutes
+  const grossWPM = totalCharacter / 5 / ((60 - timeValue) / 60); // in seconds divifing by 60 to give time in minutes
   // console.log(grossWPM.toFixed(0));
   wpmValue = grossWPM;
   return grossWPM.toFixed(0);
@@ -279,11 +281,6 @@ function handleMobileDropDown() {
   const mobileBTN = document.getElementsByClassName("mobile-btn");
   Array.from(mobileBTN).forEach((el) => {
     el.addEventListener("click", (e) => {
-      // let buttonClicked = `.${e.target.getAttribute("data-value")}`;
-      // const removeDropDown = document.querySelector(".show-drop-down");
-      // removeDropDown?.classList?.contains("show-drop-down")
-      //   ? removeDropDown.classList.remove("show-drop-down")
-      //   : "";
       e.preventDefault();
       console.log(`${e.target.getAttribute("data-value")}`);
       let elementTarget = document.querySelector(
@@ -301,11 +298,8 @@ function init() {
   panelSetting("mode", "selected-option");
   //   spanText(".type-test-text");
   panelSetting("difficulty", "selected-option");
-
   // run on load / refresh
   setDifficulty(difficultySelected);
-
-  // getKeyInput();
 
   handleMobileDropDown();
 
